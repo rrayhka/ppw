@@ -11,10 +11,10 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import nltk
 
-# # NLTK Downloads
-# nltk.download('stopwords')
-# nltk.download('punkt')
-# nltk.download('punkt_tab')
+# NLTK Downloads
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('punkt_tab')
 
 
 # NewsClassifierApp class 
