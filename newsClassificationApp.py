@@ -87,7 +87,7 @@ class NewsClassifierApp:
 
     # TF-IDF model function
     @st.cache_data
-    def model_tf_idf(self, data, _model, kategori):
+    def modelTfIdf(self, data, _model, kategori):
         tfidf_matrix = _model.transform(data)
         feature_names = _model.get_feature_names_out()
         df_tfidf = pd.DataFrame(tfidf_matrix.toarray(), columns=feature_names)
@@ -120,7 +120,7 @@ class NewsClassifierApp:
             news = self.scrapeNews(link_news)
             news['cleaned_text'] = news["isi"].apply(self.preprocessing)
             news["kategori"] = kategori
-            tfidf = self.model_tf_idf(news['cleaned_text'], self.tfidf_model, news['kategori'])
+            tfidf = self.modelTfIdf(news['cleaned_text'], self.tfidf_model, news['kategori'])
             tfidf = tfidf.drop(['Kategori Berita'], axis=1)
             prediction = self.lr_model.predict(tfidf)
             st.write(f"Kategori berita: {self.labels_encode[prediction[0]]}")
