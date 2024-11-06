@@ -87,7 +87,7 @@ class NewsClassifierApp:
 
     # TF-IDF model function
     @st.cache_data
-    def modelTfIdf(self, data, _model, kategori):
+    def modelTfIdf(_self, data, _model, kategori):
         tfidf_matrix = _model.transform(data)
         feature_names = _model.get_feature_names_out()
         df_tfidf = pd.DataFrame(tfidf_matrix.toarray(), columns=feature_names)
