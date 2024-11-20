@@ -1,0 +1,32 @@
+<!-- templates/teks.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Teks</title>
+</head>
+<body>
+    <h1>Klasifikasi Teks Berita</h1>
+    <form action="/teks" method="post">
+        <label for="user_input">Masukkan Teks Berita:</label>
+        <textarea name="user_input" id="user_input" rows="4" required></textarea>
+        <label for="model">Pilih Model:</label>
+        <select name="model" id="model">
+            <option value="logistic_regression">Model Default</option>
+            <option value="lr_modelNcompo5">Model Nkompo 5</option>
+            <option value="lr_modelNcompo10">Model Nkompo 10</option>
+        </select>
+        <input type="submit" value="Prediksi">
+    </form>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    {% if result %}
+        <h2>Hasil Klasifikasi: {{ result }}</h2>
+        <p>Probabilitas Berita: {{ prob_news }}</p>
+        <p>Probabilitas Riset: {{ prob_research }}</p>
+    {% endif %}
+</body>
+</html>
