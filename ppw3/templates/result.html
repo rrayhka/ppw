@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Summary Result</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <h2>Konten:</h2>
+    <p>{{ content[:1000] }}...</p>
+    <h2>Ringkasan:</h2>
+    <p>{{ summary }}</p>
+    <h2>Visualisasi Graf:</h2>
+    <img src="{{ graph_url }}" alt="Graph Visualization">
+    <a href="/">Kembali</a>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Berita</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Link ke file CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Klasifikasi Berita</h1>
+        <form action="{{ url_for('index') }}" method="POST">
+            <label for="link_news">Masukkan Link Berita:</label>
+            <input type="url" id="link_news" name="link_news" placeholder="https://www.cnbcindonesia.com/news/..." required>
+            <br>
+            <label for="model">Pilih Model Klasifikasi:</label>
+            <select id="model" name="model" required>
+                <option value="logistic_regression">Logistic Regression</option>
+                <option value="lr_modelNcompo5">Logistic Regression dengan SVD (5 Komponen)</option>
+                <option value="lr_modelNcompo10">Logistic Regression dengan SVD (10 Komponen)</option>
+            </select>
+
+            <button type="submit">Klasifikasikan</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        
+        {% if result %}
+            <h2>Hasil Klasifikasi: {{ result }}</h2>
+            <p>Probabilitas Kategori Berita: {{ prob_news }}%</p>
+            <p>Probabilitas Kategori Penelitian: {{ prob_research }}%</p>
+        {% endif %}
+    </div>
+</body>
+</html>
